@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Raffa Abyakta ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Styles & Animations */
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 50%, #f43f5e 100%);
+            overflow-x: hidden;
+            color: #881337; /* Rose-900 */
+        }
+
+        .font-romantic {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Heart Beat Animation */
+        .heart-btn {
+            animation: heartbeat 1.5s infinite;
+            transition: transform 0.3s;
+        }
+        .heart-btn:hover {
+            animation: none;
+            transform: scale(1.1);
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+
+        /* Floating Hearts Background */
+        .floating-heart {
+            position: absolute;
+            top: -10vh;
+            color: #e11d48; /* Rose-600 */
+            opacity: 0.6;
+            animation: fall linear forwards;
+            z-index: 0;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Typing Cursor */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: #be123c;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Page Transitions */
+        .hidden-page { display: none; opacity: 0; }
+        .fade-in { animation: fadeIn 1.5s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Love Meter Bar */
+        .progress-bar {
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+
+    <audio id="bg-music" loop>
+        <source src="https://jukehost.co.uk/files/2025/02/10/romantic-piano.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="hearts-container" class="absolute inset-0 pointer-events-none overflow-hidden h-full w-full"></div>
+
+    <div id="landing-page" class="z-10 text-center px-4">
+        <div class="relative group cursor-pointer" onclick="openLetter()">
+            <div class="text-[8rem] md:text-[10rem] text-rose-500 drop-shadow-2xl heart-btn">
+                ❤️
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span class="text-white font-romantic font-bold text-xl md:text-2xl mt-4 drop-shadow-md">Click Me</span>
+            </div>
+        </div>
+        <h1 class="mt-8 text-4xl md:text-5xl font-romantic font-bold text-rose-600 drop-shadow-sm">
+            For Raffa Abyakta
+        </h1>
+        <p class="mt-2 text-rose-400 text-lg animate-pulse">A special message from Fatta...</p>
+    </div>
+
+    <div id="main-page" class="hidden-page z-10 w-full max-w-2xl px-4 py-8">
+        
+        <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl text-center relative overflow-hidden">
+            
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-rose-300 via-rose-500 to-rose-300"></div>
+
+            <div class="min-h-[120px] mb-8 flex items-center justify-center">
+                <h2 class="text-xl md:text-2xl font-bold text-rose-700 leading-relaxed italic">
+                    "<span id="typewriter-text"></span><span class="cursor">&nbsp;</span>"
+                </h2>
+            </div>
+
+            <div class="space-y-6">
+                
+                <div class="flex justify-center items-center gap-4 text-rose-600 font-romantic text-3xl font-bold">
+                    <span>Fatta</span>
+                    <span class="text-rose-400 text-xl">❤️</span>
+                    <span>Raffa</span>
+                </div>
+
+                <div class="bg-rose-50 p-4 rounded-xl border border-rose-100">
+                    <h3 class="text-rose-800 font-bold mb-3 flex items-center justify-center gap-2">
+                        <span>📍 Tangerang Selatan</span>
+                        <span class="text-xs text-rose-400">✈️ Distance is just a number</span>
+                        <span>Tegal 📍</span>
+                    </h3>
+                    
+                    <div class="w-full bg-rose-200 rounded-full h-4 mb-2 relative overflow-hidden">
+                        <div id="love-meter" class="bg-gradient-to-r from-rose-400 to-red-500 h-4 rounded-full progress-bar flex items-center justify-end pr-2">
+                            <span class="text-[10px] text-white font-bold animate-ping">❤️</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-rose-500 italic">No distance can stop my love for u...</p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 text-center text-rose-800">
+                    <div class="glass-card p-2 rounded-lg">
+                        <span id="days" class="block text-2xl font-bold">0</span>
+                        <span class="text-xs uppercase tracking-wider">Days</span>
+                    </div>
+                    <div class="glass-card p-2 rounded-lg">
+                        <span id="hours" class="block text-2xl font-bold">0</span>
+                        <span class="text-xs uppercase tracking-wider">Hours</span>
+                    </div>
+                    <div class="glass-card p-2 rounded-lg">
+                        <span id="minutes" class="block text-2xl font-bold">0</span>
+                        <span class="text-xs uppercase tracking-wider">Mins</span>
+                    </div>
+                </div>
+
+                <p class="text-rose-700 leading-relaxed text-sm md:text-base">
+                    HAPPY FIRST VALENTINE'S DAY <span class="font-bold">MyLOVE🌹</span>. <br>
+I know we're miles apart right now, me here in Tegal and u in South Tangerang. But honestly? Distance means absolutely nothing when someone means everything.<br><br>
+
+It’s been 3 months since November 3rd, and even though we haven't met in person yet, u're already the best thing that ever happened to me. Thank u for being my mood booster, my 24/7 notification, and the reason I smile at my phone like a fool every day.<br><br>
+
+I wish I could teleport to Tangsel right now just to fu- ehh hug you. But until that day comes, please know that my heart is always right there with u. I love you more than words can say. Be happy today, okay? Because seeing you happy makes my world shine. ❤️
+                </p>
+
+                <p class="font-romantic text-2xl text-rose-600 mt-4">I Love You So Much! </p>
+                <p class="font-romantic text-2xl text-rose-600 mt-4">🌹 HAPPY VALENTINE SAYANGKU! 🌹</p>
+
+            </div>
+        </div>
+
+        <footer class="mt-8 text-center text-rose-700 text-xs font-semibold tracking-wide">
+            Made with eternal love by Fatta for Raffa. Happy Valentine's Day! 💌 ❤️
+        </footer>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        const startDate = new Date('2025-11-03T00:00:00'); // November 3, 2025
+        const typeString = "Halo sayangku cintaku duniaku yang indah pacar aku yang paling cakep imut lucu diseluruh universe ❤️";
+        
+        // --- LOGIC ---
+
+        function openLetter() {
+            // 1. Hide Landing Page
+            const landing = document.getElementById('landing-page');
+            landing.style.transition = "opacity 1s";
+            landing.style.opacity = 0;
+            
+            setTimeout(() => {
+                landing.style.display = 'none';
+                
+                // 2. Show Main Page
+                const main = document.getElementById('main-page');
+                main.style.display = 'block';
+                main.classList.add('fade-in');
+
+                // 3. Play Music
+                const audio = document.getElementById('bg-music');
+                audio.volume = 0.5;
+                audio.play().catch(e => console.log("Audio requires interaction"));
+
+                // 4. Trigger Animations
+                startHeartRain();
+                startTypewriter();
+                startTimer();
+                animateMeter();
+
+            }, 800);
+        }
+
+        // Typewriter Effect
+        function startTypewriter() {
+            const element = document.getElementById('typewriter-text');
+            let i = 0;
+            element.innerHTML = "";
+            
+            function type() {
+                if (i < typeString.length) {
+                    element.innerHTML += typeString.charAt(i);
+                    i++;
+                    setTimeout(type, 65); // Speed of typing
+                }
+            }
+            type();
+        }
+
+        // Heart Rain Animation
+        function startHeartRain() {
+            const container = document.getElementById('hearts-container');
+            const emojis = ['❤️', '💖', '💕', '🌹', '✨'];
+
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.classList.add('floating-heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4-7 seconds fall
+                
+                container.appendChild(heart);
+
+                // Cleanup
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }, 300); // New heart every 300ms
+        }
+
+        // LDR Timer
+// LDR Timer
+        function startTimer() {
+            // SETTING TANGGAL JADIAN DI SINI:
+            // Format: Tahun, Bulan (Ingat: Jan=0, Nov=10), Tanggal
+            const startDate = new Date(2025, 10, 3); // 3 November 2025
+
+            function update() {
+                const now = new Date();
+                const diff = now - startDate;
+
+                // Hitung Hari, Jam, Menit, Detik
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60); // Tambahan detik biar seru
+
+                // Masukkan ke layar
+                // Pastikan di HTML ada elemen dengan id="days", "hours", "minutes"
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                
+                // Opsional: Kalau di HTML kamu ada id="seconds", aktifkan baris ini:
+                // document.getElementById('seconds').innerText = seconds;
+            }
+
+            setInterval(update, 1000); // Update setiap 1 detik
+            update(); // Jalankan langsung biar gak nunggu 1 detik
+        }
+
+        // Meter Animation
+        function animateMeter() {
+            setTimeout(() => {
+                document.getElementById('love-meter').style.width = "100%";
+            }, 500);
+        }
+    </script>
+</body>
+</html>
