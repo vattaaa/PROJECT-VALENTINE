@@ -8,40 +8,154 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom Styles & Animations */
+        /* Custom Styles & Typography */
         body {
             font-family: 'Nunito', sans-serif;
             background: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 50%, #f43f5e 100%);
             overflow-x: hidden;
-            color: #881337; /* Rose-900 */
+            color: #881337;
+            margin: 0;
+            padding: 0;
         }
 
-        .font-romantic {
-            font-family: 'Dancing Script', cursive;
+        .font-romantic { font-family: 'Dancing Script', cursive; }
+
+        /* =========================================
+           ENVELOPE CSS ART ANIMATION
+           ========================================= */
+        .envelope-container {
+            perspective: 1000px;
+            cursor: pointer;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .envelope {
+            width: 320px;
+            height: 200px;
+            background-color: #e11d48; /* Rose 600 */
+            position: relative;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin: 0 auto;
         }
 
-        /* Heart Beat Animation */
-        .heart-btn {
+        /* Envelope Flaps */
+        .flap-top {
+            position: absolute;
+            top: 0; left: 0;
+            width: 0; height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 110px solid #be123c; /* Rose 700 - darker for depth */
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out;
+            z-index: 4;
+        }
+
+        .flap-bottom {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-bottom: 100px solid #fb7185; /* Rose 400 */
+            z-index: 3;
+        }
+
+        .flap-left {
+            position: absolute;
+            top: 0; left: 0;
+            width: 0; height: 0;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-left: 160px solid #f43f5e; /* Rose 500 */
+            z-index: 2;
+        }
+
+        .flap-right {
+            position: absolute;
+            top: 0; right: 0;
+            width: 0; height: 0;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-right: 160px solid #f43f5e; /* Rose 500 */
+            z-index: 2;
+        }
+
+        /* Heart Seal */
+        .seal {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            z-index: 5;
+            transition: opacity 0.3s ease;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
             animation: heartbeat 1.5s infinite;
-            transition: transform 0.3s;
-        }
-        .heart-btn:hover {
-            animation: none;
-            transform: scale(1.1);
-        }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            14% { transform: scale(1.1); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.1); }
-            70% { transform: scale(1); }
         }
 
-        /* Floating Hearts Background */
+        /* The Paper inside the envelope */
+        .letter-paper-mini {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 300px;
+            height: 180px;
+            background: #fffdf2;
+            border-radius: 4px;
+            z-index: 1;
+            transition: transform 1s ease-in-out 0.4s; /* Wait for flap to open */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* OPENING ANIMATION CLASSES */
+        .open-envelope .flap-top {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+        .open-envelope .seal {
+            opacity: 0;
+            animation: none;
+        }
+        .open-envelope .letter-paper-mini {
+            transform: translateY(-120px);
+        }
+
+        @keyframes heartbeat {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            14% { transform: translate(-50%, -50%) scale(1.2); }
+            28% { transform: translate(-50%, -50%) scale(1); }
+            42% { transform: translate(-50%, -50%) scale(1.2); }
+            70% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* =========================================
+           MAIN PAGE STYLES
+           ========================================= */
+        .paper-card {
+            background-color: #fffdf2; /* Classic paper color */
+            background-image: repeating-linear-gradient(transparent, transparent 27px, #f0eada 28px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .paper-card::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 30px;
+            width: 2px;
+            background-color: rgba(225, 29, 72, 0.3);
+        }
+
         .floating-heart {
             position: absolute;
             top: -10vh;
-            color: #e11d48; /* Rose-600 */
             opacity: 0.6;
             animation: fall linear forwards;
             z-index: 0;
@@ -50,14 +164,6 @@
             to { transform: translateY(110vh) rotate(360deg); }
         }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        /* Typing Cursor */
         .cursor {
             display: inline-block;
             width: 2px;
@@ -66,144 +172,165 @@
         }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* Page Transitions */
         .hidden-page { display: none; opacity: 0; }
         .fade-in { animation: fadeIn 1.5s forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Love Meter Bar */
-        .progress-bar {
-            width: 0%;
-            transition: width 2s ease-in-out;
-        }
+        .progress-bar { width: 0%; transition: width 2s ease-in-out; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center relative">
 
+    <!-- AUDIO (Autoplays when envelope is clicked) -->
     <audio id="bg-music" loop>
         <source src="ocean.mp3" type="audio/mpeg">
     </audio>
 
     <div id="hearts-container" class="absolute inset-0 pointer-events-none overflow-hidden h-full w-full"></div>
 
-    <div id="landing-page" class="z-10 text-center px-4">
-        <div class="relative group cursor-pointer" onclick="openLetter()">
-            <div class="text-[8rem] md:text-[10rem] text-rose-500 drop-shadow-2xl heart-btn">
-                ❤️
-            </div>
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span class="text-white font-romantic font-bold text-xl md:text-2xl mt-4 drop-shadow-md">Click Me</span>
+    <!-- =========================================
+         PAGE 1: LANDING (THE ENVELOPE)
+         ========================================= -->
+    <div id="landing-page" class="z-10 flex flex-col items-center justify-center h-screen w-full transition-opacity duration-1000 px-4">
+        <h1 class="mb-12 text-3xl md:text-4xl font-romantic font-bold text-white drop-shadow-md text-center">
+            You received a letter! 💌
+        </h1>
+        
+        <!-- Interactive Envelope -->
+        <div class="envelope-container" onclick="openLetter()" id="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter-paper-mini">
+                    <p class="font-romantic text-xl text-rose-500">To: Raffa Abyakta ❤️</p>
+                </div>
+                <div class="flap-top"></div>
+                <div class="flap-left"></div>
+                <div class="flap-right"></div>
+                <div class="flap-bottom"></div>
+                <div class="seal">❤️</div>
             </div>
         </div>
-        <h1 class="mt-8 text-4xl md:text-5xl font-romantic font-bold text-rose-600 drop-shadow-sm">
-            For Raffa Abyakta
-        </h1>
-        <p class="mt-2 text-rose-400 text-lg animate-pulse">A special message from Fatta...</p>
+
+        <p class="mt-16 text-rose-200 text-lg animate-pulse font-semibold tracking-wider">Tap the envelope to open</p>
     </div>
 
+    <!-- =========================================
+         PAGE 2: MAIN CONTENT (THE LETTER)
+         ========================================= -->
     <div id="main-page" class="hidden-page z-10 w-full max-w-2xl px-4 py-8">
         
-        <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl text-center relative overflow-hidden">
+        <!-- Paper Styled Card -->
+        <div class="paper-card p-8 md:p-12 text-center relative overflow-hidden pl-12 md:pl-16">
             
-            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-rose-300 via-rose-500 to-rose-300"></div>
-
-            <div class="min-h-[120px] mb-8 flex items-center justify-center">
-                <h2 class="text-xl md:text-2xl font-bold text-rose-700 leading-relaxed italic">
+            <!-- Typewriter Heading -->
+            <div class="min-h-[100px] mb-6 flex items-center justify-start text-left">
+                <h2 class="text-lg md:text-xl font-bold text-rose-800 leading-relaxed italic">
                     "<span id="typewriter-text"></span><span class="cursor">&nbsp;</span>"
                 </h2>
             </div>
 
-            <div class="space-y-6">
+            <div class="space-y-8 mt-4 text-left">
                 
-                <div class="flex justify-center items-center gap-4 text-rose-600 font-romantic text-3xl font-bold">
+                <!-- Couple Names -->
+                <div class="flex justify-center items-center gap-4 text-rose-700 font-romantic text-4xl font-bold">
                     <span>Fatta</span>
-                    <span class="text-rose-400 text-xl">❤️</span>
+                    <span class="text-rose-500 text-2xl animate-pulse">❤️</span>
                     <span>Raffa</span>
                 </div>
 
-                <div class="bg-rose-50 p-4 rounded-xl border border-rose-100">
-                    <h3 class="text-rose-800 font-bold mb-3 flex items-center justify-center gap-2">
+                <!-- Distance Tracker -->
+                <div class="bg-rose-50/80 p-4 rounded-xl border border-rose-200 shadow-sm">
+                    <h3 class="text-rose-900 font-bold mb-3 flex items-center justify-center gap-2 text-sm md:text-base">
                         <span>📍 South Tangerang</span>
-                        <span class="text-xs text-rose-400">✈️ Distance is just a number</span>
+                        <span class="text-xs text-rose-500">✈️ 7 Months Strong</span>
                         <span>Tegal 📍</span>
                     </h3>
-                    
-                    <div class="w-full bg-rose-200 rounded-full h-4 mb-2 relative overflow-hidden">
-                        <div id="love-meter" class="bg-gradient-to-r from-rose-400 to-red-500 h-4 rounded-full progress-bar flex items-center justify-end pr-2">
-                            <span class="text-[10px] text-white font-bold animate-ping">❤️</span>
+                    <div class="w-full bg-rose-200 rounded-full h-3 mb-2 relative overflow-hidden">
+                        <div id="love-meter" class="bg-gradient-to-r from-rose-400 to-rose-600 h-3 rounded-full progress-bar flex items-center justify-end pr-1">
+                            <span class="text-[8px] text-white font-bold animate-ping">❤️</span>
                         </div>
                     </div>
-                    <p class="text-xs text-rose-500 italic">No distance can stop my love for u...</p>
+                    <p class="text-xs text-rose-600 italic text-center">No distance can stop my love for u...</p>
                 </div>
 
-                <div class="grid grid-cols-3 gap-2 text-center text-rose-800">
-                    <div class="glass-card p-2 rounded-lg">
-                        <span id="days" class="block text-2xl font-bold">0</span>
-                        <span class="text-xs uppercase tracking-wider">Days</span>
+                <!-- Live Timer -->
+                <div class="grid grid-cols-3 gap-3 text-center text-rose-900">
+                    <div class="bg-white/60 p-3 rounded-lg border border-rose-100 shadow-sm">
+                        <span id="days" class="block text-2xl md:text-3xl font-bold text-rose-600">0</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold">Days</span>
                     </div>
-                    <div class="glass-card p-2 rounded-lg">
-                        <span id="hours" class="block text-2xl font-bold">0</span>
-                        <span class="text-xs uppercase tracking-wider">Hours</span>
+                    <div class="bg-white/60 p-3 rounded-lg border border-rose-100 shadow-sm">
+                        <span id="hours" class="block text-2xl md:text-3xl font-bold text-rose-600">0</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold">Hours</span>
                     </div>
-                    <div class="glass-card p-2 rounded-lg">
-                        <span id="minutes" class="block text-2xl font-bold">0</span>
-                        <span class="text-xs uppercase tracking-wider">Mins</span>
+                    <div class="bg-white/60 p-3 rounded-lg border border-rose-100 shadow-sm">
+                        <span id="minutes" class="block text-2xl md:text-3xl font-bold text-rose-600">0</span>
+                        <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold">Mins</span>
                     </div>
                 </div>
 
-                <p class="text-rose-700 leading-relaxed text-sm md:text-base">
-                    HAPPY HALF-YEAR ANNIVERSARY <span class="font-bold">MyLOVE🌹</span>. <br>
-I know we're miles apart right now, me here in Tegal and u in South Tangerang. But honestly? Distance means absolutely nothing when someone means everything.<br><br>
+                <!-- Romantic Letter Content -->
+                <p class="text-rose-900 leading-relaxed text-sm md:text-base text-justify">
+                    HAPPY 7TH MONTHSARY <span class="font-bold text-rose-700">MyLOVE 🌹</span>.<br><br>
+                    
+                    I know we're miles apart right now, me here in Tangsel and u in Tegal. But honestly? Distance means absolutely nothing when someone means everything to me.<br><br>
 
-It’s been 6 amazing months (half a year!) since November 3rd, and even though we haven't met in person yet, u're already the best thing that ever happened to me. Thank u for being my mood booster, my 24/7 notification, and the reason I smile at my phone like a fool every day.<br><br>
+                    It’s been 7 beautiful months since November 3rd. Time flies so fast, and even though we haven't met in person yet, u're already the best thing that ever happened to my life. Thank u for being my ultimate mood booster, my favorite 24/7 notification, and the reason I smile at my phone like a fool every single day.<br><br>
 
-I wish I could teleport to Tangsel right now just to hug you. But until that day comes, please know that my heart is always right there with u. I love you more than words can say. Be happy today, okay? Because seeing you happy makes my world shine. ❤️
+                    I wish I could teleport to Tegal right now just to hug you tight. But until that day finally comes, please know that my heart is always right there beside u. I love you more than words can ever describe. Be happy today, okay? Because seeing you happy makes my whole world shine. ✨
                 </p>
 
-                <p class="font-romantic text-2xl text-rose-600 mt-4">I Love You So Much! </p>
-                <p class="font-romantic text-2xl text-rose-600 mt-4">🌹 HAPPY 6 MONTHSARY SAYANGKU! 🌹</p>
+                <!-- Sign off -->
+                <div class="text-right mt-6 pr-4">
+                    <p class="font-romantic text-2xl text-rose-700">With all my love,</p>
+                    <p class="font-romantic text-3xl font-bold text-rose-600 mt-2">Fatta ❤️</p>
+                </div>
 
             </div>
         </div>
 
-        <footer class="mt-8 text-center text-rose-700 text-xs font-semibold tracking-wide">
-            Made with eternal love by Fatta for Raffa. Happy 6th Monthsary! 💌 ❤️
+        <footer class="mt-8 text-center text-rose-800 text-xs font-semibold tracking-wider">
+            Made with eternal love by Fatta for Raffa. Happy 7th Monthsary! 💌
         </footer>
     </div>
 
     <script>
         // --- CONFIGURATION ---
-        const startDate = new Date('2025-11-03T00:00:00'); // November 3, 2025
-        const typeString = "Halo sayangku cintaku duniaku yang indah istriku kekasihku hidupku pacar aku yang paling cakep imut lucu diseluruh alam semestaa ❤️";
+        const startDate = new Date(2025, 10, 3); // November 3, 2025
+        const typeString = "Halo sayangku cintaku duniaku yang indah pacar aku yang paling cakep imut lucu diseluruh universe ❤️";
         
         // --- LOGIC ---
 
         function openLetter() {
-            // 1. Hide Landing Page
-            const landing = document.getElementById('landing-page');
-            landing.style.transition = "opacity 1s";
-            landing.style.opacity = 0;
+            // 1. Trigger CSS Envelope Animation
+            const envelopeWrapper = document.getElementById('envelope-wrapper');
+            envelopeWrapper.classList.add('open-envelope');
             
+            // Try to play music
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.5;
+            audio.play().catch(e => console.log("Audio requires interaction"));
+
+            // 2. Wait for envelope to open, then transition pages
             setTimeout(() => {
-                landing.style.display = 'none';
+                const landing = document.getElementById('landing-page');
+                landing.style.opacity = '0'; // Fade out
                 
-                // 2. Show Main Page
-                const main = document.getElementById('main-page');
-                main.style.display = 'block';
-                main.classList.add('fade-in');
+                setTimeout(() => {
+                    landing.style.display = 'none';
+                    
+                    // Show Main Page
+                    const main = document.getElementById('main-page');
+                    main.style.display = 'block';
+                    main.classList.add('fade-in');
 
-                // 3. Play Music
-                const audio = document.getElementById('bg-music');
-                audio.volume = 0.5;
-                audio.play().catch(e => console.log("Audio requires interaction"));
+                    // Start Inner Animations
+                    startHeartRain();
+                    startTypewriter();
+                    startTimer();
+                    animateMeter();
 
-                // 4. Trigger Animations
-                startHeartRain();
-                startTypewriter();
-                startTimer();
-                animateMeter();
-
-            }, 800);
+                }, 1000); // Wait for fade out
+            }, 1500); // Wait for envelope flap and paper slide
         }
 
         // Typewriter Effect
@@ -219,63 +346,54 @@ I wish I could teleport to Tangsel right now just to hug you. But until that day
                     setTimeout(type, 65); // Speed of typing
                 }
             }
-            type();
+            // Delay typing slightly so user can see it start
+            setTimeout(type, 500);
         }
 
         // Heart Rain Animation
         function startHeartRain() {
             const container = document.getElementById('hearts-container');
-            const emojis = ['❤️', '💖', '💕', '🌹', '✨'];
+            const emojis = ['❤️', '💖', '💕', '🌹', '✨', '💌'];
 
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
                 heart.classList.add('floating-heart');
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-                heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4-7 seconds fall
+                heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+                heart.style.animationDuration = Math.random() * 3 + 4 + 's';
                 
                 container.appendChild(heart);
 
-                // Cleanup
                 setTimeout(() => {
                     heart.remove();
                 }, 7000);
-            }, 300); // New heart every 300ms
+            }, 400); 
         }
 
-        // LDR Timer
+        // Live LDR Timer
         function startTimer() {
-            // SETTING TANGGAL JADIAN DI SINI:
-            // Format: Tahun, Bulan (Ingat: Jan=0, Nov=10), Tanggal
-            const startDate = new Date(2025, 10, 3); // 3 November 2025
-
             function update() {
                 const now = new Date();
                 const diff = now - startDate;
 
-                // Hitung Hari, Jam, Menit, Detik
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
                 const minutes = Math.floor((diff / 1000 / 60) % 60);
-                const seconds = Math.floor((diff / 1000) % 60); // Tambahan detik biar seru
 
-                // Masukkan ke layar
-                // Pastikan di HTML ada elemen dengan id="days", "hours", "minutes"
                 document.getElementById('days').innerText = days;
                 document.getElementById('hours').innerText = hours;
                 document.getElementById('minutes').innerText = minutes;
             }
-
-            setInterval(update, 1000); // Update setiap 1 detik
-            update(); // Jalankan langsung biar gak nunggu 1 detik
+            setInterval(update, 1000);
+            update(); 
         }
 
-        // Meter Animation
+        // Meter Bar Animation
         function animateMeter() {
             setTimeout(() => {
                 document.getElementById('love-meter').style.width = "100%";
-            }, 500);
+            }, 800);
         }
     </script>
 </body>
