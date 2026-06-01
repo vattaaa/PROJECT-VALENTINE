@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Raffa Abyakta ❤️</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* Custom Styles & Typography */
         body {
             font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 50%, #f43f5e 100%);
+            background: #1e1115; /* Cozy Dark Rose background */
+            background-image: radial-gradient(circle at 50% 0%, #4c1d2e 0%, #1e1115 70%);
             overflow-x: hidden;
-            color: #881337;
+            color: #fecdd3; /* Rose 200 */
             margin: 0;
             padding: 0;
         }
@@ -33,21 +34,20 @@
         .envelope {
             width: 320px;
             height: 200px;
-            background-color: #e11d48; /* Rose 600 */
+            background-color: #be123c; /* Rose 700 */
             position: relative;
             border-radius: 0 0 8px 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             margin: 0 auto;
         }
 
-        /* Envelope Flaps */
         .flap-top {
             position: absolute;
             top: 0; left: 0;
             width: 0; height: 0;
             border-left: 160px solid transparent;
             border-right: 160px solid transparent;
-            border-top: 110px solid #be123c; /* Rose 700 - darker for depth */
+            border-top: 110px solid #9f1239; /* Rose 800 */
             transform-origin: top;
             transition: transform 0.6s ease-in-out;
             z-index: 4;
@@ -59,31 +59,22 @@
             width: 0; height: 0;
             border-left: 160px solid transparent;
             border-right: 160px solid transparent;
-            border-bottom: 100px solid #fb7185; /* Rose 400 */
+            border-bottom: 100px solid #e11d48; /* Rose 600 */
             z-index: 3;
         }
 
-        .flap-left {
+        .flap-left, .flap-right {
             position: absolute;
-            top: 0; left: 0;
+            top: 0;
             width: 0; height: 0;
             border-top: 100px solid transparent;
             border-bottom: 100px solid transparent;
-            border-left: 160px solid #f43f5e; /* Rose 500 */
             z-index: 2;
         }
+        
+        .flap-left { left: 0; border-left: 160px solid #f43f5e; }
+        .flap-right { right: 0; border-right: 160px solid #f43f5e; }
 
-        .flap-right {
-            position: absolute;
-            top: 0; right: 0;
-            width: 0; height: 0;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid transparent;
-            border-right: 160px solid #f43f5e; /* Rose 500 */
-            z-index: 2;
-        }
-
-        /* Heart Seal */
         .seal {
             position: absolute;
             top: 100px;
@@ -92,11 +83,10 @@
             font-size: 40px;
             z-index: 5;
             transition: opacity 0.3s ease;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
             animation: heartbeat 1.5s infinite;
         }
 
-        /* The Paper inside the envelope */
         .letter-paper-mini {
             position: absolute;
             top: 10px;
@@ -106,101 +96,113 @@
             background: #fffdf2;
             border-radius: 4px;
             z-index: 1;
-            transition: transform 1s ease-in-out 0.4s; /* Wait for flap to open */
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 1s ease-in-out 0.4s; 
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* OPENING ANIMATION CLASSES */
-        .open-envelope .flap-top {
-            transform: rotateX(180deg);
-            z-index: 0;
-        }
-        .open-envelope .seal {
-            opacity: 0;
-            animation: none;
-        }
-        .open-envelope .letter-paper-mini {
-            transform: translateY(-120px);
-        }
+        .open-envelope .flap-top { transform: rotateX(180deg); z-index: 0; }
+        .open-envelope .seal { opacity: 0; animation: none; }
+        .open-envelope .letter-paper-mini { transform: translateY(-120px); }
 
         @keyframes heartbeat {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            14% { transform: translate(-50%, -50%) scale(1.2); }
-            28% { transform: translate(-50%, -50%) scale(1); }
-            42% { transform: translate(-50%, -50%) scale(1.2); }
-            70% { transform: translate(-50%, -50%) scale(1); }
+            0%, 28%, 70% { transform: translate(-50%, -50%) scale(1); }
+            14%, 42% { transform: translate(-50%, -50%) scale(1.2); }
         }
 
         /* =========================================
-           MAIN PAGE STYLES
+           MUSIC PLAYER STYLES
            ========================================= */
-        .paper-card {
-            background-color: #fffdf2; /* Classic paper color */
-            background-image: repeating-linear-gradient(transparent, transparent 27px, #f0eada 28px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-radius: 8px;
-            position: relative;
+        .music-card {
+            background: rgba(20, 10, 13, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 24px;
+        }
+
+        .vinyl-record {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: #111;
+            border: 4px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 4s linear infinite;
+            animation-play-state: paused;
         }
         
-        .paper-card::before {
-            content: '';
-            position: absolute;
-            top: 0; bottom: 0; left: 30px;
-            width: 2px;
-            background-color: rgba(225, 29, 72, 0.3);
+        .vinyl-record.playing {
+            animation-play-state: running;
         }
 
-        .floating-heart {
-            position: absolute;
-            top: -10vh;
-            opacity: 0.6;
-            animation: fall linear forwards;
-            z-index: 0;
-        }
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
+        .vinyl-center {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f43f5e; /* Rose 500 */
+            border: 2px solid #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            background-color: #be123c;
-            animation: blink 1s infinite;
+        .vinyl-hole {
+            width: 12px;
+            height: 12px;
+            background: #111;
+            border-radius: 50%;
         }
-        @keyframes blink { 50% { opacity: 0; } }
 
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Lyrics Scroll Area */
+        .lyrics-container {
+            max-height: 250px;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+        .lyrics-container::-webkit-scrollbar { display: none; /* Chrome */ }
+
+        .lyric-line {
+            opacity: 0.5;
+            transition: opacity 0.3s, transform 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        .lyric-line:hover {
+            opacity: 1;
+            transform: scale(1.02);
+            color: #fff;
+        }
+
+        .progress-bar { width: 0%; transition: width 1s linear; }
+        
         .hidden-page { display: none; opacity: 0; }
         .fade-in { animation: fadeIn 1.5s forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .progress-bar { width: 0%; transition: width 2s ease-in-out; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center relative">
 
-    <!-- AUDIO (Autoplays when envelope is clicked) -->
+    <!-- Ganti src ini dengan link lagu favorit kalian jika ada -->
     <audio id="bg-music" loop>
-        <source src="ocean.mp3" type="audio/mpeg">
+        <source src="https://jukehost.co.uk/files/2025/02/10/romantic-piano.mp3" type="audio/mpeg">
     </audio>
 
-    <div id="hearts-container" class="absolute inset-0 pointer-events-none overflow-hidden h-full w-full"></div>
-
-    <!-- =========================================
-         PAGE 1: LANDING (THE ENVELOPE)
-         ========================================= -->
+    <!-- PAGE 1: ENVELOPE -->
     <div id="landing-page" class="z-10 flex flex-col items-center justify-center h-screen w-full transition-opacity duration-1000 px-4">
-        <h1 class="mb-12 text-3xl md:text-4xl font-romantic font-bold text-white drop-shadow-md text-center">
-            You received a letter! 💌
+        <h1 class="mb-12 text-3xl md:text-4xl font-romantic font-bold text-rose-300 drop-shadow-md text-center">
+            You received a track! 🎧
         </h1>
         
-        <!-- Interactive Envelope -->
         <div class="envelope-container" onclick="openLetter()" id="envelope-wrapper">
             <div class="envelope">
                 <div class="letter-paper-mini">
-                    <p class="font-romantic text-xl text-rose-500">To: Raffa Abyakta ❤️</p>
+                    <p class="font-romantic text-xl text-rose-600 font-bold">To: Raffa Abyakta</p>
                 </div>
                 <div class="flap-top"></div>
                 <div class="flap-left"></div>
@@ -209,191 +211,164 @@
                 <div class="seal">❤️</div>
             </div>
         </div>
-
-        <p class="mt-16 text-rose-200 text-lg animate-pulse font-semibold tracking-wider">Tap the envelope to open</p>
+        <p class="mt-16 text-rose-400 text-sm animate-pulse tracking-wider uppercase">Tap to Play</p>
     </div>
 
-    <!-- =========================================
-         PAGE 2: MAIN CONTENT (THE LETTER)
-         ========================================= -->
-    <div id="main-page" class="hidden-page z-10 w-full max-w-2xl px-4 py-8">
+    <!-- PAGE 2: MUSIC PLAYER -->
+    <div id="main-page" class="hidden-page z-10 w-full max-w-md px-4 py-8">
         
-        <!-- Paper Styled Card -->
-        <div class="paper-card p-8 md:p-12 text-center relative overflow-hidden pl-12 md:pl-16">
+        <div class="music-card p-6 md:p-8 text-center relative overflow-hidden flex flex-col items-center">
             
-            <!-- Typewriter Heading -->
-            <div class="min-h-[100px] mb-6 flex items-center justify-start text-left">
-                <h2 class="text-lg md:text-xl font-bold text-rose-800 leading-relaxed italic">
-                    "<span id="typewriter-text"></span><span class="cursor">&nbsp;</span>"
-                </h2>
+            <!-- Vinyl Record -->
+            <div class="vinyl-record mt-4 mb-6" id="vinyl">
+                <div class="vinyl-center">
+                    <div class="vinyl-hole"></div>
+                </div>
             </div>
 
-            <div class="space-y-8 mt-4 text-left">
+            <!-- Song Info -->
+            <h2 class="text-2xl font-bold text-white mb-1">Happy 7th Monthsary</h2>
+            <p class="text-rose-400 text-sm font-semibold tracking-widest uppercase mb-6">Fatta ft. Raffa</p>
+
+            <!-- LDR Stats as "Audio Info" -->
+            <div class="w-full bg-rose-950/50 rounded-lg p-3 mb-6 flex justify-between items-center border border-rose-900/50">
+                <div class="text-left">
+                    <p class="text-[10px] text-rose-500 uppercase">Distance</p>
+                    <p class="text-sm font-bold text-rose-200">Tangsel - Tegal</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-[10px] text-rose-500 uppercase">Duration</p>
+                    <p class="text-sm font-bold text-rose-200"><span id="days">0</span> Days</p>
+                </div>
+            </div>
+
+            <!-- Music Progress Bar -->
+            <div class="w-full mb-6">
+                <div class="w-full bg-rose-950 rounded-full h-1.5 relative overflow-hidden">
+                    <div id="progress" class="bg-rose-500 h-1.5 rounded-full progress-bar"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-rose-500 mt-2 font-mono">
+                    <span id="current-time">0:00</span>
+                    <span>∞:∞</span>
+                </div>
+            </div>
+
+            <!-- Custom Controls -->
+            <div class="flex items-center justify-center gap-6 mb-8 text-rose-400">
+                <svg class="w-6 h-6 opacity-70" fill="currentColor" viewBox="0 0 24 24"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+                <div class="bg-rose-500 rounded-full p-4 text-white shadow-lg shadow-rose-500/30">
+                    <!-- Pause Icon -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </div>
+                <svg class="w-6 h-6 opacity-70" fill="currentColor" viewBox="0 0 24 24"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+            </div>
+
+            <!-- Lyrics Section (The Letter) -->
+            <div class="w-full text-left lyrics-container border-t border-rose-900/50 pt-6">
+                <p class="text-xl font-bold text-white mb-6 italic" id="typewriter-text"></p>
                 
-                <!-- Couple Names -->
-                <div class="flex justify-center items-center gap-4 text-rose-700 font-romantic text-4xl font-bold">
-                    <span>Fatta</span>
-                    <span class="text-rose-500 text-2xl animate-pulse">❤️</span>
-                    <span>Raffa</span>
-                </div>
-
-                <!-- Distance Tracker -->
-                <div class="bg-rose-50/80 p-4 rounded-xl border border-rose-200 shadow-sm">
-                    <h3 class="text-rose-900 font-bold mb-3 flex items-center justify-center gap-2 text-sm md:text-base">
-                        <span>📍 South Tangerang</span>
-                        <span class="text-xs text-rose-500">✈️ 7 Months Strong</span>
-                        <span>Tegal 📍</span>
-                    </h3>
-                    <div class="w-full bg-rose-200 rounded-full h-3 mb-2 relative overflow-hidden">
-                        <div id="love-meter" class="bg-gradient-to-r from-rose-400 to-rose-600 h-3 rounded-full progress-bar flex items-center justify-end pr-1">
-                            <span class="text-[8px] text-white font-bold animate-ping">❤️</span>
-                        </div>
-                    </div>
-                    <p class="text-xs text-rose-600 italic text-center">No distance can stop my love for u...</p>
-                </div>
-
-                <!-- Live Timer -->
-                <div class="grid grid-cols-3 gap-3 text-center text-rose-900">
-                    <div class="bg-white/60 p-3 rounded-lg border border-rose-100 shadow-sm">
-                        <span id="days" class="block text-2xl md:text-3xl font-bold text-rose-600">0</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold">Days</span>
-                    </div>
-                    <div class="bg-white/60 p-3 rounded-lg border border-rose-100 shadow-sm">
-                        <span id="hours" class="block text-2xl md:text-3xl font-bold text-rose-600">0</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold">Hours</span>
-                    </div>
-                    <div class="bg-white/60 p-3 rounded-lg border border-rose-100 shadow-sm">
-                        <span id="minutes" class="block text-2xl md:text-3xl font-bold text-rose-600">0</span>
-                        <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold">Mins</span>
-                    </div>
-                </div>
-
-                <!-- Romantic Letter Content -->
-                <p class="text-rose-900 leading-relaxed text-sm md:text-base text-justify">
-                    HAPPY 7TH MONTHSARY <span class="font-bold text-rose-700">MyLOVE 🌹</span>.<br><br>
-                    
-                    I know we're miles apart right now, me here in Tangsel and u in Tegal. But honestly? Distance means absolutely nothing when someone means everything to me.<br><br>
-
-                    It’s been 7 beautiful months since November 3rd. Time flies so fast, and even though we haven't met in person yet, u're already the best thing that ever happened to my life. Thank u for being my ultimate mood booster, my favorite 24/7 notification, and the reason I smile at my phone like a fool every single day.<br><br>
-
-                    I wish I could teleport to Tegal right now just to hug you tight. But until that day finally comes, please know that my heart is always right there beside u. I love you more than words can ever describe. Be happy today, okay? Because seeing you happy makes my whole world shine. ✨
-                </p>
-
-                <!-- Sign off -->
-                <div class="text-right mt-6 pr-4">
-                    <p class="font-romantic text-2xl text-rose-700">With all my love,</p>
-                    <p class="font-romantic text-3xl font-bold text-rose-600 mt-2">Fatta ❤️</p>
-                </div>
-
+                <p class="lyric-line text-lg font-semibold">I know we're miles apart right now,</p>
+                <p class="lyric-line text-lg font-semibold">me here in Tangsel and u in Tegal.</p>
+                <p class="lyric-line text-lg font-semibold">But honestly?</p>
+                <p class="lyric-line text-lg font-semibold">Distance means absolutely nothing</p>
+                <p class="lyric-line text-lg font-semibold">when someone means everything. ✨</p>
+                
+                <p class="lyric-line text-lg font-semibold mt-4">It’s been 7 beautiful months</p>
+                <p class="lyric-line text-lg font-semibold">since November 3rd.</p>
+                <p class="lyric-line text-lg font-semibold">Time flies so fast,</p>
+                <p class="lyric-line text-lg font-semibold">and even though we haven't met in person yet,</p>
+                <p class="lyric-line text-lg font-semibold">u're already the best thing</p>
+                <p class="lyric-line text-lg font-semibold">that ever happened to my life.</p>
+                
+                <p class="lyric-line text-lg font-semibold mt-4">Thank u for being my ultimate mood booster,</p>
+                <p class="lyric-line text-lg font-semibold">my favorite 24/7 notification,</p>
+                <p class="lyric-line text-lg font-semibold">and the reason I smile at my phone</p>
+                <p class="lyric-line text-lg font-semibold">like a fool every single day. 🥺</p>
+                
+                <p class="lyric-line text-lg font-semibold mt-4">I wish I could teleport to Tegal right now</p>
+                <p class="lyric-line text-lg font-semibold">just to hug you tight.</p>
+                <p class="lyric-line text-lg font-semibold">But until that day finally comes,</p>
+                <p class="lyric-line text-lg font-semibold">please know that my heart is always right there beside u.</p>
+                
+                <p class="lyric-line text-2xl text-rose-400 font-bold mt-8">I love you more than words can say.</p>
+                <p class="lyric-line text-xl font-romantic text-rose-300 mt-2">Always yours, Fatta ❤️</p>
             </div>
         </div>
-
-        <footer class="mt-8 text-center text-rose-800 text-xs font-semibold tracking-wider">
-            Made with eternal love by Fatta for Raffa. Happy 7th Monthsary! 💌
-        </footer>
     </div>
 
     <script>
-        // --- CONFIGURATION ---
         const startDate = new Date(2025, 10, 3); // November 3, 2025
         const typeString = "Halo sayangku cintaku duniaku yang indah pacar aku yang paling cakep imut lucu diseluruh universe ❤️";
         
-        // --- LOGIC ---
-
         function openLetter() {
-            // 1. Trigger CSS Envelope Animation
             const envelopeWrapper = document.getElementById('envelope-wrapper');
             envelopeWrapper.classList.add('open-envelope');
             
-            // Try to play music
             const audio = document.getElementById('bg-music');
             audio.volume = 0.5;
             audio.play().catch(e => console.log("Audio requires interaction"));
 
-            // 2. Wait for envelope to open, then transition pages
             setTimeout(() => {
                 const landing = document.getElementById('landing-page');
-                landing.style.opacity = '0'; // Fade out
+                landing.style.opacity = '0';
                 
                 setTimeout(() => {
                     landing.style.display = 'none';
-                    
-                    // Show Main Page
                     const main = document.getElementById('main-page');
-                    main.style.display = 'block';
+                    main.style.display = 'flex';
                     main.classList.add('fade-in');
 
-                    // Start Inner Animations
-                    startHeartRain();
+                    // Play Vinyl
+                    document.getElementById('vinyl').classList.add('playing');
+
                     startTypewriter();
                     startTimer();
-                    animateMeter();
+                    simulateProgress();
 
-                }, 1000); // Wait for fade out
-            }, 1500); // Wait for envelope flap and paper slide
+                }, 1000);
+            }, 1500);
         }
 
-        // Typewriter Effect
         function startTypewriter() {
             const element = document.getElementById('typewriter-text');
             let i = 0;
-            element.innerHTML = "";
+            element.innerHTML = "\"";
             
             function type() {
                 if (i < typeString.length) {
-                    element.innerHTML += typeString.charAt(i);
+                    element.innerHTML = "\"" + typeString.substring(0, i+1) + "<span class='cursor'></span>\"";
                     i++;
-                    setTimeout(type, 65); // Speed of typing
+                    setTimeout(type, 65);
+                } else {
+                    element.innerHTML = "\"" + typeString + "\"";
                 }
             }
-            // Delay typing slightly so user can see it start
-            setTimeout(type, 500);
+            setTimeout(type, 800);
         }
 
-        // Heart Rain Animation
-        function startHeartRain() {
-            const container = document.getElementById('hearts-container');
-            const emojis = ['❤️', '💖', '💕', '🌹', '✨', '💌'];
-
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                heart.classList.add('floating-heart');
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = Math.random() * 15 + 15 + 'px';
-                heart.style.animationDuration = Math.random() * 3 + 4 + 's';
-                
-                container.appendChild(heart);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 7000);
-            }, 400); 
-        }
-
-        // Live LDR Timer
         function startTimer() {
             function update() {
                 const now = new Date();
                 const diff = now - startDate;
-
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / 1000 / 60) % 60);
-
                 document.getElementById('days').innerText = days;
-                document.getElementById('hours').innerText = hours;
-                document.getElementById('minutes').innerText = minutes;
             }
             setInterval(update, 1000);
             update(); 
         }
 
-        // Meter Bar Animation
-        function animateMeter() {
-            setTimeout(() => {
-                document.getElementById('love-meter').style.width = "100%";
-            }, 800);
+        function simulateProgress() {
+            let seconds = 0;
+            setInterval(() => {
+                seconds++;
+                let min = Math.floor(seconds / 60);
+                let sec = seconds % 60;
+                document.getElementById('current-time').innerText = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+                
+                // Animate progress bar slowly
+                let width = (seconds % 300) / 300 * 100; // Resets every 5 mins
+                document.getElementById('progress').style.width = width + "%";
+            }, 1000);
         }
     </script>
 </body>
