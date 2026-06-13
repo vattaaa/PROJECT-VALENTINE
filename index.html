@@ -101,15 +101,12 @@
 </head>
 <body class="w-full h-screen relative">
 
-    <!-- Musik Latar -->
     <audio id="bg-music" loop>
         <source src="you.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Confetti Overlay -->
     <canvas id="confetti-canvas" class="hidden"></canvas>
 
-    <!-- SCREEN 1: START MENU -->
     <div id="start-screen" class="screen px-4 text-center">
         <h2 class="text-rose-500 text-sm mb-4 tracking-widest">PLAYER 1 READY</h2>
         <h1 class="text-3xl md:text-5xl neon-text mb-8 leading-tight">
@@ -123,19 +120,15 @@
         </button>
     </div>
 
-    <!-- SCREEN 2: GAMEPLAY -->
     <div id="game-screen" class="screen hidden px-2 py-4 flex-col justify-between">
         
-        <!-- Header -->
         <div class="w-full max-w-[320px] flex justify-between items-center mb-4">
             <div class="text-rose-500 text-xs">P1: RAFFA</div>
             <div class="text-rose-500 text-xs">STAGE 17</div>
         </div>
 
-        <!-- The Game Canvas -->
         <canvas id="game-canvas" width="300" height="300"></canvas>
 
-        <!-- D-PAD for Mobile Controls -->
         <div class="mt-6 font-sans">
             <div class="grid grid-cols-3 gap-2">
                 <div></div>
@@ -149,7 +142,6 @@
         <p class="text-[8px] text-rose-800 mt-4 text-center">(Use D-Pad or Keyboard Arrows)</p>
     </div>
 
-    <!-- SCREEN 3: WINNING & SURPRISE LETTER -->
     <div id="win-screen" class="screen hidden px-4 py-6">
         <div class="letter-card p-6 md:p-8 w-full max-w-md relative">
             <div class="text-center mb-6">
@@ -158,13 +150,11 @@
                 <p class="text-[10px] text-rose-400 mt-1 font-bold">ACHIEVEMENT UNLOCKED: SWEET SEVENTEEN</p>
             </div>
 
-            <!-- THE LONG SURPRISE LETTER -->
             <div class="font-sans text-rose-900 text-sm md:text-base leading-relaxed space-y-4 text-justify">
                 
-                <!-- ESTHETIC POLAROID PHOTO -->
                 <div class="w-full flex justify-center my-8">
                     <div class="bg-white p-3 rounded-sm shadow-xl rotate-[-3deg] max-w-[220px] border border-gray-100 transition-transform hover:rotate-0 duration-300">
-                        <img src="him.jpg" alt="My Love" class="w-full h-auto aspect-square object-cover rounded-sm border border-gray-200">
+                        <img src="him.png" alt="My Love" class="w-full h-auto aspect-square object-cover rounded-sm border border-gray-200">
                         <p class="font-romantic text-rose-600 text-center text-2xl mt-3 font-bold">My Favorite View ❤️</p>
                     </div>
                 </div>
@@ -184,209 +174,4 @@
                 </p>
 
                 <p>
-                    and i also wanna say sorry 😔. i'm sorry that i couldn't give you a gift this year. i wish i could hand you something special today, something you could hold and keep. i know your sweet seventeen only happens once, and i wish i could do more for you. but please know that it's not because i don't want to. if i could, i'd give you the biggest hug and spend the whole day with you 😭❤️
-                </p>
-
-                <p>
-                    so instead of a gift, let me make you a promise. <strong>i promise i'll come see you soon. i'll do my best to come to Tangerang Selatan and finally see you in person 🥺❤️</strong> after all this time talking through screens, calls, and messages, i wanna see your smile with my own eyes, hear your voice without a phone between us, and make real memories together.
-                </p>
-
-                <p>
-                    and one more thinggg 😔❤️<br>
-                    i'm really, really proud that i get to be here with you during your sweet seventeen. out of all the people in the world, somehow i became someone who's part of your story during one of the most important ages of your life 🥺❤️ and honestly, that means so much to me.
-                </p>
-
-                <p>
-                    i get to see you grow, chase your dreams, experience new things, and become the amazing person you are today. being able to accompany you through this chapter of your life is something i'll always be grateful for 😔❤️
-                </p>
-
-                <p>
-                    and you know what they say? 😭 apparently, the person you meet when you're 16 or 17 is often your loml. i don't know if that's actually true or not hehe, but i do know one thing: <span class="font-bold text-rose-700">meeting you has been one of the best things that has ever happened to me ❤️</span><br>
-                    and if that saying is true... then i really hope it's you. 😔❤️
-                </p>
-
-                <p>
-                    it's honestly crazy to think that we've spent all this time loving each other from a distance. but somehow, you've never felt far away. you've always been close to my heart, no matter how many kilometers are between us ❤️
-                </p>
-
-                <p>
-                    once again, happy sweet seventeen, my love ❤️🎂<br>
-                    i hope today makes you smile as much as you've made me smile. thank you for being born, thank you for being you, and thank you for choosing me every day.
-                </p>
-
-                <p class="font-bold text-rose-700 text-center mt-8 text-lg">
-                    i love you sooo muchhhh, and i can't wait to see you soon ❤️❤️❤️
-                </p>
-
-                <p class="font-bold text-rose-600 text-right mt-4 italic text-base">
-                    Always yours,<br>Fatta
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- GAME LOGIC SCRIPT -->
-    <script>
-        // --- GAME VARIABLES ---
-        const canvas = document.getElementById('game-canvas');
-        const ctx = canvas.getContext('2d');
-        const tileSize = 30; // 10x10 grid (300/30)
-        
-        // 1 = Wall, 0 = Path, 2 = Player Start, 3 = Goal (Cake)
-        const mazeMap = [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 2, 0, 1, 0, 0, 0, 0, 0, 1],
-            [1, 1, 0, 1, 0, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-            [1, 1, 1, 0, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 0, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 1, 3, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-        ];
-
-        let player = { x: 1, y: 1 };
-        const goal = { x: 8, y: 9 };
-        let gameActive = false;
-
-        // --- DRAWING FUNCTIONS ---
-        function drawMaze() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let row = 0; row < mazeMap.length; row++) {
-                for (let col = 0; col < mazeMap[row].length; col++) {
-                    if (mazeMap[row][col] === 1) {
-                        // Draw Wall
-                        ctx.fillStyle = '#be123c'; // Rose 700
-                        ctx.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
-                        ctx.strokeStyle = '#881337'; // Rose 900
-                        ctx.strokeRect(col * tileSize, row * tileSize, tileSize, tileSize);
-                    }
-                }
-            }
-            // Draw Goal
-            ctx.font = "20px Arial";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText("🎂", goal.x * tileSize + tileSize/2, goal.y * tileSize + tileSize/2);
-            
-            // Draw Player
-            ctx.fillText("❤️", player.x * tileSize + tileSize/2, player.y * tileSize + tileSize/2);
-        }
-
-        // --- MOVEMENT LOGIC ---
-        function movePlayer(dx, dy) {
-            if (!gameActive) return;
-            let newX = player.x + dx;
-            let newY = player.y + dy;
-
-            // Check collision with walls
-            if (mazeMap[newY][newX] !== 1) {
-                player.x = newX;
-                player.y = newY;
-                drawMaze();
-                checkWin();
-            }
-        }
-
-        function checkWin() {
-            if (player.x === goal.x && player.y === goal.y) {
-                gameActive = false;
-                setTimeout(triggerWin, 500); // Wait half a second before showing letter
-            }
-        }
-
-        // --- CONTROLS ---
-        // Keyboard
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowUp' || e.key === 'w') movePlayer(0, -1);
-            if (e.key === 'ArrowDown' || e.key === 's') movePlayer(0, 1);
-            if (e.key === 'ArrowLeft' || e.key === 'a') movePlayer(-1, 0);
-            if (e.key === 'ArrowRight' || e.key === 'd') movePlayer(1, 0);
-        });
-
-        // D-Pad Touch/Click
-        document.getElementById('btn-up').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer(0, -1); });
-        document.getElementById('btn-down').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer(0, 1); });
-        document.getElementById('btn-left').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer(-1, 0); });
-        document.getElementById('btn-right').addEventListener('touchstart', (e) => { e.preventDefault(); movePlayer(1, 0); });
-        
-        // Fallback for mouse click on D-pad
-        document.getElementById('btn-up').addEventListener('click', () => movePlayer(0, -1));
-        document.getElementById('btn-down').addEventListener('click', () => movePlayer(0, 1));
-        document.getElementById('btn-left').addEventListener('click', () => movePlayer(-1, 0));
-        document.getElementById('btn-right').addEventListener('click', () => movePlayer(1, 0));
-
-
-        // --- GAME FLOW ---
-        function startGame() {
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('game-screen').classList.remove('hidden');
-            
-            // Play Music
-            const audio = document.getElementById('bg-music');
-            audio.volume = 0.6;
-            audio.play().catch(e => console.log("Audio play blocked until interaction"));
-
-            drawMaze();
-            gameActive = true;
-        }
-
-        function triggerWin() {
-            document.getElementById('game-screen').classList.add('hidden');
-            document.getElementById('win-screen').classList.remove('hidden');
-            document.getElementById('confetti-canvas').classList.remove('hidden');
-            fireConfetti();
-        }
-
-        // --- SIMPLE CONFETTI SYSTEM ---
-        function fireConfetti() {
-            const confCanvas = document.getElementById('confetti-canvas');
-            const confCtx = confCanvas.getContext('2d');
-            confCanvas.width = window.innerWidth;
-            confCanvas.height = window.innerHeight;
-
-            const pieces = [];
-            const colors = ['#f43f5e', '#fb7185', '#fda4af', '#fff', '#fde047'];
-
-            for (let i = 0; i < 100; i++) {
-                pieces.push({
-                    x: Math.random() * confCanvas.width,
-                    y: Math.random() * confCanvas.height - confCanvas.height,
-                    size: Math.random() * 10 + 5,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    speedY: Math.random() * 3 + 2,
-                    speedX: Math.random() * 2 - 1,
-                    rotation: Math.random() * 360,
-                    rotationSpeed: Math.random() * 10 - 5
-                });
-            }
-
-            function animateConfetti() {
-                confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
-                pieces.forEach(p => {
-                    p.y += p.speedY;
-                    p.x += p.speedX;
-                    p.rotation += p.rotationSpeed;
-
-                    confCtx.save();
-                    confCtx.translate(p.x, p.y);
-                    confCtx.rotate(p.rotation * Math.PI / 180);
-                    confCtx.fillStyle = p.color;
-                    confCtx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
-                    confCtx.restore();
-
-                    // Reset if it goes off screen
-                    if (p.y > confCanvas.height) {
-                        p.y = -20;
-                        p.x = Math.random() * confCanvas.width;
-                    }
-                });
-                requestAnimationFrame(animateConfetti);
-            }
-            animateConfetti();
-        }
-    </script>
-</body>
-</html>
+                    and i also wanna say sorry 😔. i'm sorry that i couldn't give you a gift this year. i wish i could hand you something special today, something you could hold and keep. i know your sweet seventeen only happens once, and i wish i could do more for you. but please know that it's not
