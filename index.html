@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Level 17 Unlocked! 🎂</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* Retro & Custom Styles */
@@ -77,7 +77,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(225, 29, 72, 0.3);
             color: #881337;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
         }
 
@@ -115,7 +115,7 @@
             LEVEL 17<br>UNLOCKED
         </h1>
         <div class="mb-12 font-sans text-rose-300 text-sm md:text-base max-w-sm">
-            <p>Misi: Temukan jalan keluar untuk mengambil hadiah ulang tahunmu!</p>
+            <p>Mission: Find your way out of this maze to claim your birthday surprise!</p>
         </div>
         <button onclick="startGame()" class="pulse bg-rose-600 hover:bg-rose-500 text-white font-sans font-bold text-xl py-3 px-8 rounded-full border-4 border-rose-800 shadow-[0_0_15px_#e11d48]">
             PRESS START ▶
@@ -145,34 +145,56 @@
                 <div class="dpad-btn" id="btn-right">➡️</div>
             </div>
         </div>
-        <p class="text-[8px] text-rose-800 mt-4 text-center">(Gunakan D-Pad atau Panah Keyboard)</p>
+        <p class="text-[8px] text-rose-800 mt-4 text-center">(Use D-Pad or Keyboard Arrows)</p>
     </div>
 
-    <!-- SCREEN 3: WINNING & LETTER -->
+    <!-- SCREEN 3: WINNING & SURPRISE LETTER -->
     <div id="win-screen" class="screen hidden px-4 py-6">
         <div class="letter-card p-6 md:p-8 w-full max-w-md relative">
             <div class="text-center mb-6">
                 <div class="text-5xl mb-2 pulse">🎂</div>
-                <h2 class="font-sans font-bold text-2xl text-rose-600">Level 17 Cleared!</h2>
-                <p class="text-[10px] text-rose-400 mt-1">ACHIEVEMENT UNLOCKED: SWEET SEVENTEEN</p>
+                <h2 class="font-sans font-bold text-2xl md:text-3xl text-rose-600 uppercase tracking-wide">Level 17 Cleared!</h2>
+                <p class="text-[10px] text-rose-400 mt-1 font-bold">ACHIEVEMENT UNLOCKED: SWEET SEVENTEEN</p>
             </div>
 
-            <div class="font-sans text-rose-900 text-sm leading-relaxed space-y-4 text-justify">
-                <p><strong>Happy Sweet 17th, Raffa Abyakta! 🎉❤️</strong></p>
+            <!-- THE LONG SURPRISE LETTER -->
+            <div class="font-sans text-rose-900 text-sm md:text-base leading-relaxed space-y-4 text-justify">
+                <p class="text-lg font-bold text-rose-700 text-center mb-4">HAPPY 17TH BIRTHDAY TO MY ENTIRE UNIVERSE, RAFFA ABYAKTA! 🎉❤️</p>
+                
                 <p>
-                    Selamat ya sayang, kamu berhasil nyelesaiin labirinnya dan sekarang resmi naik ke Level 17! 🥺 Nggak kerasa ya, di bulan yang sama dengan 7 bulan kita bareng-bareng, kamu juga ngerayain ulang tahun yang ke-17.
+                    I honestly still can't wrap my head around the fact that you're finally 17. Welcome to this beautiful new chapter of your life, my love. Growing older means growing more amazing, and I am so incredibly lucky to witness the beautiful person you are becoming every single day. 🥺
                 </p>
+                
                 <p>
-                    Di umur yang baru ini, aku cuma mau doain yang terbaik buat kamu. Semoga kamu makin dewasa, makin bahagia, semua impian kamu pelan-pelan tercapai, dan yang paling penting... semoga kamu selalu sehat ya di Tegal sana. 
+                    It honestly breaks my heart that you are in Tangsel right now, and I can't be there at this exact second to celebrate you. I wish I could be the first person to bring you a cake, sing you a birthday song, and give you the tightest, warmest hug. I'm so sorry that I can't send you a fancy physical gift today, or wrap my arms around you right when you turn 17. 😔
                 </p>
+
                 <p>
-                    Makasih udah jadi partner main, partner cerita, dan rumah buat aku. Walaupun sekarang kita masih kehalang jarak, aku harap hadiah kecil berupa game ini bisa bikin kamu senyum hari ini. 
+                    But... I couldn't just give you a normal gift for your sweet seventeen. I wanted to give you something real.
                 </p>
-                <p class="font-bold text-rose-700 text-center mt-6">
-                    I love you so much, pacarku! Selamat ulang tahun! 🎁❤️
+
+                <p>
+                    So, my ultimate birthday gift for you is... <span class="font-bold text-rose-600">ME</span>. 😭❤️
                 </p>
-                <p class="font-bold text-rose-600 text-right mt-4 italic">
-                    ~ Fatta
+
+                <p>
+                    Yes, you read that right, sayang. <strong>I AM COMING TO TANGSEL TO SEE YOU THIS MONTH! ✈️✨</strong>
+                </p>
+
+                <p>
+                    After 7 long months of staring at your beautiful face through a screen, after all the late-night calls, the missing you until it hurts, and the wishing you were right next to me... the waiting is finally over. I am finally going to meet you. I am going to hold your hands, look deeply into your eyes, and hug you so incredibly tight until all the distance between us disappears. We are going to celebrate your birthday, our 7th month, and everything else we've missed, together. In person. 🥹
+                </p>
+
+                <p>
+                    I hope today brings you endless joy, peace, and so many reasons to smile. You deserve the entire world, Raffa, and I am going to spend my life trying to give it to you. Please wait just a little bit more for me, okay?
+                </p>
+
+                <p class="font-bold text-rose-700 text-center mt-8 text-lg">
+                    I love you more than words, distance, or time could ever comprehend. See you very, very soon, my birthday boy! 🏳️‍🌈❤️✨
+                </p>
+
+                <p class="font-bold text-rose-600 text-right mt-4 italic text-base">
+                    Always yours,<br>Fatta
                 </p>
             </div>
         </div>
