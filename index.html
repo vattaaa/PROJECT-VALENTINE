@@ -1,42 +1,1144 @@
+
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesan Khusus</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #ffe6f2; /* Warna latar belakang merah muda lembut */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .message-box {
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 80%;
-        }
-        h1 {
-            color: #d81b60; /* Warna teks merah muda tua / magenta */
-            font-size: 22px;
-            line-height: 1.6;
-            font-weight: 600;
-            margin: 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eee5d7">
+<title>365 Days of Us ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #eee5d7;
+  --cream: #f8f3eb;
+  --ink: #40332b;
+  --muted: #88796a;
+  --wine: #783f48;
+  --line: #d7cbbb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(#8d78601c .7px, transparent .7px);
+  background-size: 7px 7px;
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .10;
+  z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.serif {
+  font-family: "Playfair Display", serif;
+}
+
+.mono {
+  font-family: "DM Mono", monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .65rem;
+}
+
+.container {
+  width: min(1000px, calc(100% - 40px));
+  margin: auto;
+}
+
+/* NAVIGATION */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.music-btn {
+  background: transparent;
+  border: 1px solid #bcae9d;
+  padding: 10px 15px;
+  border-radius: 30px;
+  color: var(--ink);
+  font-size: .75rem;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 60px 0;
+}
+
+.hero-content {
+  max-width: 750px;
+}
+
+.stamp {
+  display: inline-block;
+  border: 1px solid #bba998;
+  color: var(--wine);
+  padding: 9px 15px;
+  transform: rotate(-4deg);
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font: 500 clamp(3.5rem, 10vw, 7.5rem)/.98 "Playfair Display", serif;
+  letter-spacing: -.06em;
+}
+
+.hero h1 em {
+  color: var(--wine);
+}
+
+.hero-sub {
+  font: italic 1.15rem "Playfair Display", serif;
+  color: var(--muted);
+  margin: 25px 0;
+}
+
+.hero-meta {
+  color: var(--muted);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.open-btn {
+  margin-top: 35px;
+  background: var(--wine);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  transition: .3s;
+}
+
+.open-btn:hover {
+  transform: translateY(-4px);
+  background: #63343c;
+}
+
+.scroll {
+  position: absolute;
+  bottom: 25px;
+  color: var(--muted);
+  font-size: .65rem;
+  letter-spacing: .15em;
+}
+
+/* GENERAL SECTION */
+
+section {
+  padding: 95px 0;
+}
+
+.eyebrow {
+  color: var(--wine);
+  font-family: "DM Mono", monospace;
+  font-size: .67rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.section-heading {
+  font: 500 clamp(2.5rem, 6vw, 4.3rem)/1.05 "Playfair Display", serif;
+  letter-spacing: -.04em;
+  margin-bottom: 35px;
+}
+
+.section-heading em {
+  color: var(--wine);
+}
+
+.section-note {
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.8;
+  max-width: 450px;
+  margin-top: -18px;
+  margin-bottom: 30px;
+}
+
+.paper {
+  background: var(--cream);
+  border: 1px solid #e0d5c6;
+  padding: clamp(22px, 5vw, 45px);
+  box-shadow: 0 18px 50px #43302018;
+  position: relative;
+}
+
+/* FIRST MESSAGE */
+
+.beginning-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.story {
+  color: #625348;
+  font-size: .94rem;
+  line-height: 2;
+}
+
+.story p {
+  margin-bottom: 17px;
+}
+
+.chat-card {
+  background: #e8ddcf;
+  padding: 22px;
+  transform: rotate(2deg);
+  box-shadow: 0 12px 30px #59432b20;
+}
+
+.chat-label {
+  font: .65rem "DM Mono", monospace;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.chat-image {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: contain;
+}
+
+.chat-placeholder {
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #f8f3eb;
+  color: var(--wine);
+  font: italic 1rem "Playfair Display", serif;
+  padding: 20px;
+}
+
+.chat-caption {
+  text-align: right;
+  color: var(--wine);
+  font: italic .9rem "Playfair Display", serif;
+  margin-top: 20px;
+}
+
+/* TIMELINE */
+
+.timeline {
+  border-left: 1px solid #c8b8a5;
+  margin-left: 8px;
+  padding-left: 30px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 42px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: var(--wine);
+  border-radius: 50%;
+  left: -35px;
+  top: 5px;
+}
+
+.timeline-date {
+  color: var(--wine);
+  font: .7rem "DM Mono", monospace;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  font: 1.6rem "Playfair Display", serif;
+  margin-bottom: 10px;
+}
+
+.timeline-item p {
+  color: #625348;
+  line-height: 1.9;
+  font-size: .9rem;
+}
+
+/* PHOTO GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  align-items: start;
+}
+
+.polaroid {
+  background: #fffdf8;
+  padding: 11px 11px 18px;
+  box-shadow: 0 12px 30px #59432b20;
+  transform: rotate(-2deg);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.polaroid:nth-child(even) {
+  transform: rotate(2deg);
+  margin-top: 25px;
+}
+
+.polaroid:hover {
+  transform: rotate(0) translateY(-7px);
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 4/4.5;
+  object-fit: cover;
+  display: block;
+  background: #ded2c2;
+}
+
+.polaroid figcaption {
+  text-align: center;
+  padding-top: 14px;
+  font: italic .9rem "Playfair Display", serif;
+}
+
+/* WIDE PHOTO */
+
+.wide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.wide-photo {
+  background: white;
+  padding: 12px 12px 25px;
+  box-shadow: 0 15px 35px #59432b20;
+  transform: rotate(-1deg);
+}
+
+.wide-photo img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  background: #ded2c2;
+}
+
+.wide-photo figcaption {
+  text-align: center;
+  font: italic .9rem "Playfair Display", serif;
+  padding-top: 13px;
+}
+
+.quote {
+  font: italic 1.8rem/1.5 "Playfair Display", serif;
+  color: var(--wine);
+}
+
+/* ACCOUNTABILITY */
+
+.accountability {
+  background: #e6dbcc;
+  border-left: 3px solid var(--wine);
+  padding: 27px;
+  color: #625348;
+  line-height: 2;
+  font-size: .92rem;
+}
+
+/* LETTER */
+
+.letter {
+  max-width: 750px;
+  margin: auto;
+  background: #faf6ee;
+  border: 1px solid #e0d5c6;
+  box-shadow: 0 18px 50px #43302018;
+  padding: clamp(30px, 7vw, 65px);
+}
+
+.letter h3 {
+  font: italic 2.3rem "Playfair Display", serif;
+  color: var(--wine);
+  margin: 15px 0 25px;
+}
+
+.letter p {
+  color: #625348;
+  font-size: .94rem;
+  line-height: 2;
+  margin-bottom: 18px;
+}
+
+.signature {
+  font: italic 1.5rem "Playfair Display", serif;
+  color: var(--wine);
+  margin-top: 30px;
+}
+
+/* ENDING */
+
+.ending {
+  text-align: center;
+  padding: 110px 0;
+}
+
+.ending h2 {
+  font: 500 clamp(2.5rem, 6vw, 4.5rem)/1.15 "Playfair Display", serif;
+  margin-bottom: 25px;
+}
+
+.ending em {
+  color: var(--wine);
+}
+
+.ending p {
+  max-width: 500px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.heart {
+  color: var(--wine);
+  font-size: 1.6rem;
+  margin: 30px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: .65rem;
+  letter-spacing: .1em;
+}
+
+/* ANIMATION */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s, transform .8s;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #211a18ed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.lightbox button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+}
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+  .container {
+    width: calc(100% - 30px);
+  }
+
+  .hero {
+    min-height: 80vh;
+  }
+
+  section {
+    padding: 70px 0;
+  }
+
+  .beginning-grid,
+  .wide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .polaroid:nth-child(even) {
+    margin-top: 20px;
+  }
+
+  .timeline {
+    padding-left: 25px;
+  }
+
+  .timeline-item::before {
+    left: -30px;
+  }
+
+  .quote {
+    font-size: 1.5rem;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="message-box">
-        <h1>hai cantiku raffa abyakta hernawan, website ini hanya dapat dibuka pukul 06:00, 3 November 2026, mwah</h1>
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="music/blessed.mp3" type="audio/mpeg">
+</audio>
+
+<!-- NAVIGATION -->
+<nav class="container">
+  <div class="logo">a little book of us ♡</div>
+  <button class="music-btn" id="musicBtn">
+    ♫ <span id="musicLabel">Play our song</span>
+  </button>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero container" id="home">
+  <div class="hero-content">
+    <div class="stamp mono">A keepsake · No. 001</div>
+
+    <div class="mono" style="color:var(--muted);margin-bottom:20px">
+      NOVEMBER 03, 2025 — NOVEMBER 03, 2026
     </div>
+
+    <h1>
+      365 days<br>
+      <em>with you.</em>
+    </h1>
+
+    <p class="hero-sub">
+      A story that started with one little question.
+    </p>
+
+    <div class="hero-meta">
+      Tegal ↔ Tangerang Selatan · One year of us
+    </div>
+
+    <button class="open-btn" onclick="openDiary()">
+      Open our little diary ↗
+    </button>
+
+    <p style="font-size:.7rem;color:var(--muted);margin-top:15px">
+      Best read slowly, with our song playing.
+    </p>
+  </div>
+
+  <div class="scroll mono">SCROLL TO TURN THE PAGE ↓</div>
+</section>
+
+<!-- INTRO -->
+<div style="text-align:center;padding:20px;border-block:1px solid var(--line);font:italic 1rem 'Playfair Display';color:var(--muted)">
+  “Some of my favorite memories started with you.”
+</div>
+
+<!-- CHAPTER 1 -->
+<section class="container reveal" id="beginning">
+
+  <div class="eyebrow">CHAPTER 01 · THE BEGINNING</div>
+
+  <h2 class="section-heading">
+    It started with<br>
+    <em>a message.</em>
+  </h2>
+
+  <p class="section-note">
+    A random FYP, an Instagram follow, and a message I never expected.
+  </p>
+
+  <div class="paper beginning-grid">
+
+    <div class="story">
+      <p>
+        I first saw you on my TikTok FYP.
+        I thought you were way out of my league,
+        so instead of following you there,
+        I found you on Instagram.
+      </p>
+
+      <p>
+        You followed me back, and not long after that,
+        you reached out first.
+      </p>
+
+      <p>
+        Just one little question:
+        <strong>“orang indo kah?”</strong>
+      </p>
+
+      <p>
+        We started talking, exchanged numbers,
+        and somehow your business WhatsApp number
+        became part of our origin story.
+        You didn't trust me just yet,
+        but little by little, we got closer.
+      </p>
+
+      <p style="color:var(--wine);font-family:'Playfair Display';font-style:italic">
+        I had no idea that a simple DM would lead me here,
+        one year later.
+      </p>
+    </div>
+
+    <div class="chat-card">
+      <div class="chat-label">INSTAGRAM · OUR FIRST DM</div>
+
+      <!-- REPLACE WITH YOUR ORIGINAL CROPPED SCREENSHOT -->
+      <img
+        class="chat-image"
+        src="images/first-chat.png"
+        alt="Our first Instagram message"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+      >
+
+      <div class="chat-placeholder" style="display:none">
+        Add your original<br>
+        “orang indo kah?”<br>
+        screenshot here ♡
+      </div>
+
+      <div class="chat-caption">the first little hello ♡</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHAPTER 2 -->
+<section class="container reveal">
+
+  <div class="eyebrow">CHAPTER 02 · NOVEMBER 3, 2025</div>
+
+  <h2 class="section-heading">
+    The day we<br>
+    <em>became us.</em>
+  </h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">OCTOBER 03, 2025</div>
+      <div class="timeline-title">The start of something</div>
+      <p>
+        We had been talking for a while, getting to know each other,
+        sharing little pieces of our days.
+        Somewhere in that first month,
+        you became someone I looked forward to talking to.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">NOVEMBER 03, 2025</div>
+      <div class="timeline-title">A confession while you were cooking</div>
+      <p>
+        Exactly one month later, I finally gathered the courage
+        to tell you how I felt.
+        You were cooking at the time —
+        probably not expecting that moment to become
+        one of the most important dates in my life.
+        And you said yes.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHAPTER 3 -->
+<section class="container reveal">
+
+  <div class="eyebrow">CHAPTER 03 · TWO CITIES, ONE US</div>
+
+  <h2 class="section-heading">
+    Loving across<br>
+    <em>the distance.</em>
+  </h2>
+
+  <div class="paper">
+    <p class="quote">
+      “Even when we couldn't be in the same place,
+      you were still part of my everyday.”
+    </p>
+
+    <p class="story" style="margin-top:25px">
+      Our days were made of WhatsApp messages,
+      random stories, calls and video calls before sleep.
+      Sometimes we only got to talk around 11 at night,
+      but those little moments became something
+      I looked forward to.
+
+      Distance was part of our story,
+      but it never had to be the whole story.
+    </p>
+
+    <div class="eyebrow" style="margin-top:25px">
+      TEGAL ↔ TANGERANG SELATAN
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 4 -->
+<section class="container reveal">
+
+  <div class="eyebrow">CHAPTER 04 · JULY 25, 2026</div>
+
+  <h2 class="section-heading">
+    Our first<br>
+    <em>time together.</em>
+  </h2>
+
+  <div class="wide-grid">
+
+    <figure class="wide-photo">
+      <img src="images/first-meeting.jpg"
+           alt="Our first meeting"
+           onerror="this.style.opacity='.2'">
+      <figcaption>July 25, 2026 · Tangerang Selatan</figcaption>
+    </figure>
+
+    <div class="story">
+      <p>
+        You came to pick me up at Pasar Senen station.
+        And there you were — finally, right in front of me.
+        After all those messages and late-night calls,
+        I got to see your smile in real life.
+      </p>
+
+      <p>
+        We had three days and two nights together.
+        Nasi goreng, the little Blokees Mr. Tombstone gift,
+        our first date at BXSea and BXChange,
+        walking around Jakarta, and sharing bakso at GBK.
+      </p>
+
+      <p>
+        When it was time to go, you took me to Tanah Abang station.
+        I went back to Tegal carrying so many memories —
+        and already missing you.
+      </p>
+
+      <p class="quote">
+        “Three days felt like a little world
+        I wished I could stay in.”
+      </p>
+    </div>
+
+  </div>
+
+  <div class="gallery" style="margin-top:40px">
+
+    <figure class="polaroid">
+      <img src="images/bxsea-1.jpg" alt="BXSea">
+      <figcaption>Our first date</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/bxsea-2.jpg" alt="BXSea">
+      <figcaption>Under the blue</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/gbk.jpg" alt="GBK">
+      <figcaption>A little Jakarta day</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- CHAPTER 5 -->
+<section class="container reveal">
+
+  <div class="eyebrow">CHAPTER 05 · WHAT I LEARNED</div>
+
+  <h2 class="section-heading">
+    Love means<br>
+    <em>doing better.</em>
+  </h2>
+
+  <div class="accountability">
+    I know our story has had moments that hurt you,
+    and I know some of that hurt doesn't simply disappear
+    because I say I'm sorry.
+
+    I take responsibility for the choices I made
+    and for the times they made you feel unsafe
+    in this relationship. You never deserved that.
+
+    <br><br>
+
+    I can't change what happened,
+    and I won't ask you to forget it before you're ready.
+    What I can do is keep showing up honestly,
+    listen when something hurts,
+    and make better choices consistently.
+
+    I want my actions to give you more reasons
+    to feel safe with me.
+  </div>
+</section>
+
+<!-- CHAPTER 6 -->
+<section class="container reveal">
+
+  <div class="eyebrow">CHAPTER 06 · OCTOBER 16, 2026</div>
+
+  <h2 class="section-heading">
+    You came<br>
+    <em>to my city.</em>
+  </h2>
+
+  <div class="story" style="margin-bottom:30px">
+    <p>
+      You travelled all the way to Tegal,
+      and I was so excited to finally welcome you to my city.
+      I picked you up at the station, we got Point Coffee,
+      spent time together, went to the mall, ate,
+      took photobooth pictures, and found little ways
+      to make the most of our time.
+    </p>
+
+    <p>
+      Not every moment was easy.
+      We had a difficult moment that brought old pain back,
+      and I saw how much it still affected you.
+      I am sorry for the hurt I caused.
+      I'm grateful we were able to talk, comfort each other,
+      and keep trying to understand one another.
+    </p>
+
+    <p>
+      Then came Cold N Brew, another photobooth,
+      McDonald's, ice cream, and the goodbye at Tegal station.
+      I still remember seeing you through the train window
+      while I stood outside.
+      The journey home felt unusually quiet after that.
+    </p>
+  </div>
+
+  <div class="gallery">
+
+    <figure class="polaroid">
+      <img src="images/tegal-1.jpg" alt="Tegal">
+      <figcaption>You made it to my city</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/photobooth-1.jpg" alt="Photobooth">
+      <figcaption>One for the album</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/photobooth-2.jpg" alt="Photobooth">
+      <figcaption>My favorite little frames</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/cold-n-brew.jpg" alt="Cold N Brew">
+      <figcaption>Coffee before goodbye</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/point-coffee.jpg" alt="Point Coffee">
+      <figcaption>Our little coffee stop</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/train-goodbye.jpg" alt="Goodbye">
+      <figcaption>Until next time</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- EXTRA MEMORIES -->
+<section class="container reveal">
+
+  <div class="eyebrow">A FEW MORE PAGES</div>
+
+  <h2 class="section-heading">
+    Little things,<br>
+    <em>big memories.</em>
+  </h2>
+
+  <p class="section-note">
+    Add the random selfies, screenshots, silly moments,
+    and everything you want to keep.
+  </p>
+
+  <div class="gallery">
+
+    <figure class="polaroid">
+      <img src="images/memory-1.jpg" alt="Memory 1">
+      <figcaption>Just us</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/memory-2.jpg" alt="Memory 2">
+      <figcaption>One of those days</figcaption>
+    </figure>
+
+    <figure class="polaroid">
+      <img src="images/memory-3.jpg" alt="Memory 3">
+      <figcaption>And another one</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- LOVE LETTER -->
+<section class="container reveal">
+
+  <div class="eyebrow">CHAPTER 07 · NOVEMBER 3, 2026</div>
+
+  <h2 class="section-heading">
+    A letter<br>
+    <em>for you.</em>
+  </h2>
+
+  <div class="letter">
+
+    <div class="eyebrow">MY DEAREST RAFFA,</div>
+
+    <h3>Happy first anniversary.</h3>
+
+    <p>
+      One year ago, I asked you to be mine
+      while you were busy cooking.
+      It's still funny to think that our story began
+      with a random Instagram message
+      and somehow brought us all the way here.
+    </p>
+
+    <p>
+      Thank you for every late-night call,
+      every little update, every laugh,
+      every visit, and every memory we've made.
+      Thank you for making the distance feel a little smaller,
+      and for letting me be part of your days.
+    </p>
+
+    <p>
+      I know I haven't always loved you the way you deserved.
+      I'm sorry for the times I hurt you
+      and for the trust I damaged.
+      I don't expect one letter to fix everything.
+      I just want to keep proving, through the way I treat you,
+      that I am serious about loving you better.
+    </p>
+
+    <p>
+      I hope we get more ordinary days together:
+      more coffee dates, more photobooths,
+      more food stops, more silly conversations,
+      and more moments where we don't have to count
+      the hours until goodbye.
+    </p>
+
+    <p>
+      Thank you for being Raffa.
+      Thank you for this first year.
+      And if we get to write another chapter tomorrow,
+      I hope I can make it a little kinder,
+      safer, and happier for both of us.
+    </p>
+
+    <p>
+      aku sayang kamu,
+      and I'm so grateful that our paths crossed.
+      Here's to the memories we've made
+      and the ones we haven't met yet.
+    </p>
+
+    <div class="signature">
+      With all my love,<br>
+      Fatta ♡
+    </div>
+
+  </div>
+</section>
+
+<!-- ENDING -->
+<section class="ending container reveal">
+
+  <div class="eyebrow">THE NEXT CHAPTER</div>
+
+  <h2>
+    One year down.<br>
+    <em>Our story continues.</em>
+  </h2>
+
+  <p>
+    From one little question to a whole year of memories.
+    I hope there are still countless pages waiting for us.
+  </p>
+
+  <div class="heart">♡ &nbsp; ♡ &nbsp; ♡</div>
+
+  <div class="eyebrow">
+    NOVEMBER 03, 2025 — ALWAYS AND STILL
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  MADE WITH LOVE · FOR RAFFA ABYAKTA HERNAWAN · 2026
+</footer>
+
+<!-- PHOTO LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button onclick="closeLightbox()">×</button>
+  <img id="lightboxImage" src="" alt="Expanded memory">
+</div>
+
+<script>
+
+// OPEN DIARY
+function openDiary() {
+  document.getElementById("beginning").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+// MUSIC CONTROL
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+const musicLabel = document.getElementById("musicLabel");
+
+musicBtn.addEventListener("click", async () => {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicLabel.textContent = "Pause our song";
+    } catch {
+      musicLabel.textContent = "Check blessed.mp3";
+    }
+  } else {
+    music.pause();
+    musicLabel.textContent = "Play our song";
+  }
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => {
+  observer.observe(el);
+});
+
+// PHOTO LIGHTBOX
+document.querySelectorAll(".polaroid img, .wide-photo img").forEach(img => {
+  img.addEventListener("click", () => {
+    if (!img.complete || img.naturalWidth === 0) return;
+
+    document.getElementById("lightboxImage").src = img.src;
+    document.getElementById("lightbox").classList.add("active");
+  });
+});
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("active");
+}
+
+document.getElementById("lightbox").addEventListener("click", e => {
+  if (e.target.id === "lightbox") closeLightbox();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeLightbox();
+});
+
+</script>
 
 </body>
 </html>
